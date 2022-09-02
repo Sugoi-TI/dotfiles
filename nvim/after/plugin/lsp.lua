@@ -1,51 +1,36 @@
--- local Remap = require("keymap")
--- local nnoremap = Remap.nnoremap
--- local inoremap = Remap.inoremap
-local cmpStatus, cmp = pcall(require, "cmp")
-local lspStatus, nvim_lsp = pcall(require, "lspconfig")
+local status, nvim_lsp = pcall(require, "lspconfig")
+if (not status) then return end
 
-if (not cmpStatus) then return end
-if (not lspStatus) then return end
+local protocol = require("vim.lsp.protocol")
 
-local lspkind = require 'lspkind'
+local on_attach = function(client, bufnr)
+    -- formatting
+    if client.server_capabilities.documentFormattingProvider then
+        vim.api.nvim_command [[augroup Format]]
+        vim.api.nvim_command [[autocmd! * <buffer>]]
+        vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_seq_sync()]]
+        vim.api.nvim_command [[augroup END]]
+    end
+end
 
--- TypeScript
 nvim_lsp.tsserver.setup {
-  on_attach = on_attach,
-  filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-  cmd = { "typescript-language-server", "--stdio" }
+    on_attach = on_attach,
+    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+    cmd = { "typescript-language-server", "--stdio" }
 }
 
--- nvim.lsp.cssls.setup(config())
-
-
-
-cmp.setup({
-  snippet = {
-    expand = function(args)
-      require('luasnip').lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true
-    }),
-  }),
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-  }),
-  formatting = {
-    format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
-  }
-})
-
-vim.cmd [[
-  set completeopt=menuone,noinsert,noselect
-  highlight! default link CmpItemKind CmpItemMenuDefault
-]]
+nvim_lsp.sumneko_lua.setup {
+    on_attach = on_attach,
+    settings = {
+        Lua = {
+            diagonstics = {
+                -- Get the language server to recognize the "vim" global
+                globals = { "vim" }
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true)
+            }
+        }
+    }
+}
