@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
     url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
+  ["gitsigns.nvim"] = {
+    loaded = true,
+    path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/gitsigns.nvim",
+    url = "https://github.com/lewis6991/gitsigns.nvim"
+  },
   ["lspkind.nvim"] = {
     loaded = true,
     path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/lspkind.nvim",
@@ -108,6 +113,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
     url = "https://github.com/windwp/nvim-autopairs"
+  },
+  ["nvim-bufferline.lua"] = {
+    loaded = true,
+    path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua",
+    url = "https://github.com/akinsho/nvim-bufferline.lua"
   },
   ["nvim-cmp"] = {
     loaded = true,
@@ -139,15 +149,35 @@ _G.packer_plugins = {
     path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
+  ["plenary.nvim"] = {
+    loaded = true,
+    path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
+  },
   ["prettier.nvim"] = {
     loaded = true,
     path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/prettier.nvim",
     url = "https://github.com/MunifTanjim/prettier.nvim"
   },
+  ["telescope-file-browser.nvim"] = {
+    loaded = true,
+    path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/telescope-file-browser.nvim",
+    url = "https://github.com/nvim-telescope/telescope-file-browser.nvim"
+  },
+  ["telescope.nvim"] = {
+    loaded = true,
+    path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
   ["tokyonight.nvim"] = {
     loaded = true,
     path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
+  },
+  ["which-key.nvim"] = {
+    loaded = true,
+    path = "/Users/tisaev/.local/share/nvim/site/pack/packer/start/which-key.nvim",
+    url = "https://github.com/folke/which-key.nvim"
   }
 }
 

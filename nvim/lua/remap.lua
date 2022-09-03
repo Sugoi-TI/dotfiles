@@ -6,7 +6,8 @@ local xnoremap = Remap.xnoremap
 local nmap = Remap.nmap
 
 nnoremap("<leader>pv", ":Ex<CR>")
-nnoremap("<C-s>", ":w<CR>")
+nnoremap("<D-s>", ":w<CR>")
+nnoremap("<D-w>", ":bd<CR>")
 
 inoremap("kj", "<Esc>")
 inoremap("jk", "<Esc>")
