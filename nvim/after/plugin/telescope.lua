@@ -14,7 +14,9 @@ telescope.setup {
         mappings = {
             ["n"] = {
                 ["q"] = actions.close,
-                ["b"] = actions.select_tab
+                ["d"] = fb_actions.remove,
+                ["b"] = actions.select_tab,
+                ["c"] = fb_actions.create,
             },
         },
     },
@@ -39,7 +41,6 @@ telescope.setup {
                     ["<C-w>"] = function() vim.cmd('normal vbd') end,
                 },
                 ["n"] = {
-                    ["c"] = fb_actions.create,
                     ["h"] = fb_actions.goto_parent_dir,
                 },
             },
