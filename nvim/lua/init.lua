@@ -1,5 +1,0 @@
-require("_packer")
-require("base-config")
-require("highlights")
-require("remap")
-require("status-line")
